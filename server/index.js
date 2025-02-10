@@ -48,6 +48,7 @@ app.post('/', (req, res) => {
 app.all("*", (req, res) => {
     res.status(404).send(`Route ${req.originalUrl} not found.`);
 });
+console.log("Auth routes loaded!");
 
 app.use('/auth', authRoutes);
 
