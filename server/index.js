@@ -19,14 +19,16 @@ app.use(express.urlencoded({ extended: true }));
 
 console.log("🚀 Server is starting...");
 
-// 🔹 Tambahkan debugging middleware
+// 🔹 Middleware Debugging
 app.use((req, res, next) => {
     console.log(`➡️ [${req.method}] ${req.path}`);
     next();
 });
 
-// 🔹 **Pindahkan authRoutes ke atas sebelum `app.all("*")`**
+// 🔹 **Tambahkan Log saat Router di-load**
+console.log("🛠 Loading auth routes...");
 app.use('/auth', authRoutes);
+console.log("✅ Auth routes loaded!");
 
 app.get('/', (req, res) => {
     res.send('Hello, World!');
@@ -56,11 +58,10 @@ app.post('/', (req, res) => {
     return res.status(200).send('Not a new message request');
 });
 
-// 🔹 **Pastikan ini di bagian terakhir**
+// 🔹 **Pastikan Ini di Bagian Terakhir**
 app.all("*", (req, res) => {
+    console.log(`⚠️ Route ${req.originalUrl} not found.`);
     res.status(404).send(`Route ${req.originalUrl} not found.`);
 });
-
-console.log("✅ Auth routes loaded!");
 
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
