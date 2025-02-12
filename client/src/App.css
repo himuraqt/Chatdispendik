@@ -25,21 +25,23 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-  
     padding: 2rem;
     background: #000205;
   }
   
   .auth__form-container_image {
-    flex: 3;
+    flex: 1;
     display: flex;
-    box-shadow: 1px 0px 5px   rgba(0, 0, 0, 0.05);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem; 
   }
   
   .auth__form-container_image img {
-    width: 100%;
-    height: 100%;
-   
+    width: 50%;  
+    object-fit: cover; 
+    border-radius: 10px; 
+    align-self: center;
   }
   
   .auth__form-container_fields-content {
@@ -166,7 +168,7 @@
     }
   
     .auth__form-container_image {
-      height: 100px;
+      height: 10px;
       flex: none;
       box-shadow: none;
     }
@@ -1071,8 +1073,9 @@
   .str-chat__message-team-group {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-  }
+    margin-left: auto; /* Geser ke kanan */
+}
+
   
   .str-chat__message-team-content p {
     font-family: Helvetica Neue, sans-serif;
